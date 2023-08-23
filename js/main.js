@@ -1,8 +1,8 @@
 // collego gli elementi del DOM
-const daysEl = document.getElementById("days");
-const hoursEl = document.getElementById("hours");
-const minutesEl = document.getElementById("minutes");
-const secondsEl = document.getElementById("seconds");
+let daysEl = document.getElementById("days");
+let hoursEl = document.getElementById("hours");
+let minutesEl = document.getElementById("minutes");
+let secondsEl = document.getElementById("seconds");
 
 // le mie costanti globali di tempo
 const oneSecond = 1000;
@@ -23,19 +23,31 @@ console.log(tomorrowDate);
 const missingTime = tomorrowDate - nowDate;
 console.log(missingTime);
 
-// converto il calcolo del missingTime
-// giorni
-const missingDay = Math.floor(missingTime / oneDay);
-console.log(missingDay);
+//creo una funzione orologio
+function getTimeWatch() {
+  // converto il calcolo del missingTime
+  // giorni
+  const missingDay = Math.floor(missingTime / oneDay);
 
-// ore
-const missingHours = Math.floor(missingTime / oneHour);
-console.log(missingHours);
+  // ore
+  const missingHours = Math.floor(missingTime / oneHour);
 
-// minuti
-const missingMinutes = Math.floor(missingTime / oneMinute);
-console.log(missingMinutes);
+  // minuti
+  const missingMinutes = Math.floor(missingTime / oneMinute) % 60;
 
-// secondi
-const missingSeconds = Math.floor(missingTime / oneSecond);
-console.log(missingSeconds);
+  // secondi
+  const missingSeconds = Math.floor(missingTime / oneSecond) % 60;
+
+  daysEl.innerHTML = missingDay;
+  hoursEl.innerHTML = missingHours;
+  minutesEl.innerHTML = missingMinutes % 60;
+  secondsEl.innerHTML = missingSeconds % 60;
+}
+
+// collego il tutto con la timing functions
+const clock = setInterval(getTimeWatch, 1000);
+
+// blocco del mio orologio
+if (missingSeconds == 0) {
+  clearInterval(clock);
+}
