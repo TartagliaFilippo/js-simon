@@ -12,3 +12,7 @@ const nowDate = new Date();
 // costante che mi definisca il tempo di domani
 const tomorrowDate = new Date(2023, 7, 24, 9, 30, 0, 0);
 console.log(tomorrowDate);
+
+// definisco il tempo rimanente
+const missingTime = tomorrowDate - nowDate;
+console.log(missingTime);
