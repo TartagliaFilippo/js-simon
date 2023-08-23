@@ -16,3 +16,20 @@ console.log(tomorrowDate);
 // definisco il tempo rimanente
 const missingTime = tomorrowDate - nowDate;
 console.log(missingTime);
+
+// converto il calcolo del missingTime
+// giorni
+const missingDay = Math.floor(missingTime / oneDay);
+console.log(missingDay);
+
+// ore
+const missingHours = Math.floor(missingTime / oneHour);
+console.log(missingHours);
+
+// minuti
+const missingMinutes = Math.floor(missingTime / oneMinute);
+console.log(missingMinutes);
+
+// secondi
+const missingSeconds = Math.floor(missingTime / oneSecond);
+console.log(missingSeconds);
