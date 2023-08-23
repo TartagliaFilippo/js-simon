@@ -10,6 +10,11 @@ const oneMinute = oneSecond * 60;
 const oneHour = oneMinute * 60;
 const oneDay = oneHour * 24;
 
+let missingDay;
+let missingHours;
+let missingMinutes;
+let missingSeconds;
+
 console.log(oneDay);
 
 //creo una funzione orologio
@@ -27,16 +32,16 @@ function getTimeWatch() {
 
   // converto il calcolo del missingTime
   // giorni
-  const missingDay = Math.floor(missingTime / oneDay);
+  missingDay = Math.floor(missingTime / oneDay);
 
   // ore
-  const missingHours = Math.floor(missingTime / oneHour);
+  missingHours = Math.floor(missingTime / oneHour);
 
   // minuti
-  const missingMinutes = Math.floor(missingTime / oneMinute) % 60;
+  missingMinutes = Math.floor(missingTime / oneMinute) % 60;
 
   // secondi
-  const missingSeconds = Math.floor(missingTime / oneSecond) % 60;
+  missingSeconds = Math.floor(missingTime / oneSecond) % 60;
 
   daysEl.innerHTML = missingDay;
   if (missingDay < 10) {
@@ -47,12 +52,12 @@ function getTimeWatch() {
   minutesEl.innerHTML = missingMinutes % 60;
 
   secondsEl.innerHTML = missingSeconds % 60;
-
-  // blocco del mio orologio
-  if (missingSeconds < 0) {
-    clearInterval(clock);
-  }
 }
 
 // collego il tutto con la timing functions
 const clock = setInterval(getTimeWatch, 1000);
+
+// blocco del mio orologio
+if (missingSeconds == 0) {
+  clearTimeout(clock);
+}
