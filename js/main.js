@@ -23,7 +23,7 @@ function getTimeWatch() {
 
   // definisco il tempo rimanente
   const missingTime = tomorrowDate - nowDate;
-  console.log(missingTime);
+  // console.log(missingTime);
 
   // converto il calcolo del missingTime
   // giorni
@@ -39,15 +39,20 @@ function getTimeWatch() {
   const missingSeconds = Math.floor(missingTime / oneSecond) % 60;
 
   daysEl.innerHTML = missingDay;
+  if (missingDay < 10) {
+    daysEl.innerHTML = "0" + missingDay;
+  }
   hoursEl.innerHTML = missingHours;
+
   minutesEl.innerHTML = missingMinutes % 60;
+
   secondsEl.innerHTML = missingSeconds % 60;
+
+  // blocco del mio orologio
+  if (missingSeconds < 0) {
+    clearInterval(clock);
+  }
 }
 
 // collego il tutto con la timing functions
 const clock = setInterval(getTimeWatch, 1000);
-
-// blocco del mio orologio
-if (missingSeconds == 0) {
-  clearInterval(clock);
-}
