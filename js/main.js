@@ -1,3 +1,9 @@
+// collego gli elementi del DOM
+const daysEl = document.getElementById("days");
+const hoursEl = document.getElementById("hours");
+const minutesEl = document.getElementById("minutes");
+const secondsEl = document.getElementById("seconds");
+
 // le mie costanti globali di tempo
 const oneSecond = 1000;
 const oneMinute = oneSecond * 60;
