@@ -23,7 +23,7 @@ function getTimeWatch() {
   const nowDate = new Date();
 
   // costante che mi definisca il tempo di domani
-  const tomorrowDate = new Date(2023, 7, 24, 9, 30, 0, 0);
+  const tomorrowDate = new Date(2023, 7, 25, 9, 30, 0, 0);
   // console.log(tomorrowDate);
 
   // definisco il tempo rimanente
@@ -35,7 +35,7 @@ function getTimeWatch() {
   missingDay = Math.floor(missingTime / oneDay);
 
   // ore
-  missingHours = Math.floor(missingTime / oneHour);
+  missingHours = Math.floor(missingTime / oneHour) % 24;
 
   // minuti
   missingMinutes = Math.floor(missingTime / oneMinute) % 60;
@@ -46,12 +46,30 @@ function getTimeWatch() {
   daysEl.innerHTML = missingDay;
   if (missingDay < 10) {
     daysEl.innerHTML = "0" + missingDay;
+  } else {
+    daysEl.innerHTML = missingDay;
   }
+
   hoursEl.innerHTML = missingHours;
+  if (missingHours < 10) {
+    hoursEl.innerHTML = "0" + missingHours;
+  } else {
+    hoursEl.innerHTML = missingHours;
+  }
 
   minutesEl.innerHTML = missingMinutes % 60;
+  if (missingMinutes < 10) {
+    minutesEl.innerHTML = "0" + missingMinutes;
+  } else {
+    minutesEl.innerHTML = missingMinutes;
+  }
 
   secondsEl.innerHTML = missingSeconds % 60;
+  if (missingSeconds < 10) {
+    secondsEl.innerHTML = "0" + missingSeconds;
+  } else {
+    secondsEl.innerHTML = missingSeconds;
+  }
 }
 
 // collego il tutto con la timing functions
