@@ -23,12 +23,18 @@ function getTimeWatch() {
   const nowDate = new Date();
 
   // costante che mi definisca il tempo di domani
-  const tomorrowDate = new Date(2023, 7, 25, 9, 30, 0, 0);
+  const tomorrowDate = new Date(2022, 7, 25, 9, 30, 0, 0);
   // console.log(tomorrowDate);
 
   // definisco il tempo rimanente
-  const missingTime = tomorrowDate - nowDate;
+  let missingTime = tomorrowDate - nowDate;
   // console.log(missingTime);
+
+  // blocco del mio orologio
+  if (missingTime <= 0) {
+    missingTime = 0;
+    clearTimeout(clock);
+  }
 
   // converto il calcolo del missingTime
   // giorni
@@ -72,10 +78,8 @@ function getTimeWatch() {
   }
 }
 
+//faccio partire la funzione alla partenza
+getTimeWatch();
+
 // collego il tutto con la timing functions
 const clock = setInterval(getTimeWatch, 1000);
-
-// blocco del mio orologio
-if (missingSeconds == 0) {
-  clearTimeout(clock);
-}
