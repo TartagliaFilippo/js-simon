@@ -23,7 +23,7 @@ function getTimeWatch() {
   const nowDate = new Date();
 
   // costante che mi definisca il tempo di domani
-  const tomorrowDate = new Date(2022, 7, 25, 9, 30, 0, 0);
+  const tomorrowDate = new Date(2023, 7, 24, 11, 4, 0, 0);
   // console.log(tomorrowDate);
 
   // definisco il tempo rimanente
